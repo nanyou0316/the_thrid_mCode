@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-function writeFs(path, content) {
+function fsWrite(path, content) {
     return new Promise(
         function (resolve, reject) {
             fs.writeFile(path, content, { encoding: 'utf8', flag: 'a' }, err => {
@@ -17,10 +17,10 @@ function writeFs(path, content) {
     )
 }
 
-async function writeFile() {
-    await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件1里面的内容\n');
-    await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件2里面的内容\n');
-    await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件3里面的内容\n');
+// async function writeFile() {
+//     await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件1里面的内容\n');
+//     await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件2里面的内容\n');
+//     await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件3里面的内容\n');
 
-};
-writeFile()
+// };
+// writeFile()
