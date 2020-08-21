@@ -18,9 +18,9 @@ function fsWrite(path, content) {
 }
 
 // async function writeFile() {
-//     await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件1里面的内容\n');
-//     await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件2里面的内容\n');
-//     await writeFs(path.join(__dirname, './data/f1.txt'), '我是文件3里面的内容\n');
+//     await fsWrite(path.join(__dirname, './data/f1.txt'), '我是文件1里面的内容\n');
+//     await fsWrite(path.join(__dirname, './data/f1.txt'), '我是文件2里面的内容\n');
+//     await fsWrite(path.join(__dirname, './data/f1.txt'), '我是文件3里面的内容\n');
 
 // };
 // writeFile()

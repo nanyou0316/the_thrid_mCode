@@ -21,6 +21,8 @@ const fs = require('fs')
 //         if (err) throw err
 //     })
 // }
-fs.rmdir(path.join(__dirname, './log'), err => {
-    if (err) throw err
-})
+// fs.rmdir(path.join(__dirname, './log'), err => {
+//     if (err) throw err
+// })
+
+
