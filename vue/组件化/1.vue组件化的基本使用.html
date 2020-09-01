@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 3.使用组件 -->
+        <my-component></my-component>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //1.创建组件构造器对象
+    const component = Vue.extend({
+        template: "<div>我是一个小组件</div>"
+
+    })
+    //2.注册组件
+    Vue.component('my-component', component)
+    var vm = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+
+    })
+</script>
+
+</html>

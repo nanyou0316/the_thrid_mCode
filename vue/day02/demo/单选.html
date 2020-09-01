@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="radio" id="app">
+        <label>
+            <input type="radio" value="苹果" v-model='danxuan'>
+            苹果
+        </label>
+        <label>
+            <input type="radio" value="香蕉巴巴变" v-model='danxuan'>
+            香蕉
+        </label>
+        <label>
+            <input type="radio" value="栗子" v-model='danxuan'>
+            栗子
+        </label>
+        <label>
+            <input type="radio" value="火龙果" v-model='danxuan'>
+            火龙果
+        </label>
+        <div>选中的是:{{danxuan}}</div>
+    </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            danxuan: '香蕉',
+
+        }
+    })
+</script>
+
+</html>

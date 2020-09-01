@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <div id="app">
+        <p>全选<input type="checkbox" v-model="checks" @change="Numlist()"> {{ checks }}</p>
+        <p>
+            <label v-for="(list,index) in checkList">
+                <input type="checkbox" v-model="checksListOn" :value="list.name">{{ list.name }}
+            </label>
+        </p>
+        <p>{{ checksListOn }}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                checks: false,
+                checkList: [{
+                        id: 1,
+                        name: '苹果'
+                    },
+                    {
+                        id: 2,
+                        name: '香蕉'
+                    },
+                    {
+                        id: 3,
+                        name: '栗子'
+                    },
+                    {
+                        id: 4,
+                        name: '橘子'
+                    }
+                ],
+                checksListOn: []
+            },
+            methods: {
+                Numlist: function () {
+                    if (this.checks) {
+                        var listArr = [];
+                        for (var i = 0; i < this.checkList.length; i++) {
+                            listArr.push(this.checkList[i].name);
+                        }
+                        this.checksListOn = listArr;
+                    } else {
+                        this.checksListOn = []
+                    }
+                }
+            },
+            watch: {
+                "checksListOn": function () {
+                    if (this.checksListOn.length == this.checkList.length) {
+                        this.checks = true
+                    } else {
+                        this.checks = false
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

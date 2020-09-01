@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <select v-model="selected" name="fruit">
+            <option v-for="option in optionsList" :value='option.value'>{{option.key}}</option>
+        </select>
+
+        <div id="output">
+            选择的网站是: {{selected}}
+        </div>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            optionsList: [{
+                key: '选择',
+                value: 'Select'
+            }, {
+                key: '淘宝',
+                value: 'taobao'
+            }, {
+                key: '京东',
+                value: 'jingd'
+            }, {
+                key: '阿里巴巴',
+                value: 'alibaba'
+            }, {
+                key: '亚马逊',
+                value: 'amazon'
+            }, {
+                key: '苏宁',
+                value: 'suning'
+            }, {
+                key: '拼多多',
+                value: 'pinduoduo'
+            }],
+            selected: 'Select'
+        }
+    })
+</script>
+
+</html>

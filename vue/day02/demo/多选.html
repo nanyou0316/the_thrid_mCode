@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 单个复选框 -->
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" value="水果" v-model='check'>
+
+            </label>
+            <span>选中的是：{{check}}</span>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" value="苹果" v-model='checkList'>
+                苹果
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" value="香蕉" v-model='checkList'>
+                香蕉
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" value="西瓜" v-model='checkList'>
+                西瓜
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" value="火龙果" v-model='checkList'>
+                火龙果
+            </label>
+        </div>
+        <p>选中的是：{{checkList}}</p>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            check: false,
+            checkList: ["火龙果"]
+        }
+    })
+</script>
+
+</html>

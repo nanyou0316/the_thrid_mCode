@@ -1,0 +1,5 @@
+对象方法 :calss={类名:条件}
+:class={active:index==currentIndex}
+
+数组方法 :calss[条件?成立时类名添加为:不成立时类名添加为]
+:class="[type==item.type?'button-fill':'']"

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="form">
+        <label for="username">昵称：</label>
+        <input type="text" id="username" v-model.trim="username">
+        <br>
+        <label for="age">年龄：</label>
+        <input type="number" id="age" v-model.number="age">
+        <br>
+        <label for="checkbox">单身：</label>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+        <br>
+        <label>喜欢：</label>
+        <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+        <label for="runoob">Runoob</label>
+        <input type="checkbox" id="google" value="Google" v-model="checkedNames">
+        <label for="google">Google</label>
+        <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">
+        <label for="taobao">taobao</label>
+        <br>
+        <br>
+        <input type="submit" v-on:click="submit" />
+        <br />
+        <br />
+        <span>昵称: {{ username }}</span>
+        <br>
+        <span>年龄: {{ age }}</span>
+        <br>
+        <span>单身: {{ checked }}</span>
+        <br>
+        <span>喜欢: {{ checkedNames }}</span>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    //.number 如果想自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个修饰符 number 给 v-model 来处理输入值
+    //<input v-model.number="age" type="number">
+    //.trim 如果要自动过滤用户输入的首尾空格，可以添加 trim 修饰符到 v-model 上过滤输入
+    //<input v-model.trim="msg">
+
+    var vm = new Vue({
+        el: '#form',
+        data: {
+            //初始值
+            username: 'username ',
+            age: 18,
+            checked: false,
+            checkedNames: ['Runoob']
+        },
+        methods: {
+            //提交表单
+            submit: function () {
+                var params = new Object();
+                params.username = this.username;
+                params.age = this.age;
+                params.checked = this.checked;
+                params.checkedNames = this.checkedNames;
+                alert("formdata：" + JSON.stringify(params));
+            }
+        }
+    });
+
+    //vue外部获取vue内部值
+    console.log(vm.username);
+    console.log(vm.age);
+    console.log(vm.checked);
+    console.log(vm.checkedNames);
+</script>
+
+</html>

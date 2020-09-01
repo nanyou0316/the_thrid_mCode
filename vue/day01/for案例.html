@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in num" :key="item" :class={active:index==currentIndex} @click=change(index)>
+
+                {{index}}-{{item}}
+            </li>
+            
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            num: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            currentIndex: 0
+        },
+        methods: {
+            change: function (id) {
+                this.currentIndex = id
+            }
+        },
+
+    })
+</script>
+
+</html>

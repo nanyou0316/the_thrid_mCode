@@ -89,10 +89,10 @@
             <button value="" @click="search_weather">搜索</button>
         </div>
         <div class="city">
-            <a href="javascript:;" class="beijing" @click='search'>北京</a>
-            <a href="javascript:;" class="shanghai" @click='search'>上海</a>
-            <a href="javascript:;" class="guangzhou" @click='search'>广州</a>
-            <a href="javascript:;" class="shenzhen" @click='search'>深圳</a>
+            <a href="javascript:;" class="beijing" @click='search("北京")'>北京</a>
+            <a href="javascript:;" class="shanghai" @click='search("上海")'>上海</a>
+            <a href="javascript:;" class="guangzhou" @click='search("广州")'>广州</a>
+            <a href="javascript:;" class="shenzhen" @click='search("深圳")'>深圳</a>
         </div>
         <div class="weather">
             <ul>
@@ -130,15 +130,19 @@
                     console.log(err);
                 })
             },
-            search: function (e) {
+            search: function (city) {
 
-                axios.get('http://wthrcdn.etouch.cn/weather_mini?city=' + e.target.text).then((res) => {
+                // axios.get('http://wthrcdn.etouch.cn/weather_mini?city=' + e.target.text).then((res) => {
 
-                    this.time_weather = res.data.data.forecast
+                //     this.time_weather = res.data.data.forecast
 
-                }).catch((err) => {
-                    console.log(err);
-                })
+                // }).catch((err) => {
+                //     console.log(err);
+                // })
+                this.city = city
+
+                this.search_weather()
+
             }
         }
     })
