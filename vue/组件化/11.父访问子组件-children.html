@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+        <button @click='showchildren'>按钮</button>
+    </div>
+    <template id="cpn">
+        <div>
+            我是子组件
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            showchildren() {
+                console.log(this.$children)
+                //调用子组件的的方法
+                // this.$children[0].showMessage()
+                for (let c of this.$children) {
+                    console.log(c.name);
+                    c.showMessage()
+                }
+            }
+        },
+        components: {
+            cpn: {
+                template: '#cpn',
+                data() {
+                    return {
+                        name: '我是子组件的name'
+                    }
+                },
+                methods: {
+                    showMessage() {
+                        console.log('我是子组件的内容')
+                    }
+                }
+            },
+
+
+        }
+    })
+</script>
+
+</html>

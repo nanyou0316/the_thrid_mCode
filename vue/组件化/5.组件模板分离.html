@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <cpn1></cpn1> -->
+        <cpn></cpn>
+        
+
+    </div>
+    <!-- 1.script标签 -->
+    <!-- <script type="text/x-template" id="cpn">
+        <div>
+            <h2>我是标题</h2>
+        </div>
+    </script> -->
+    <!-- 2.template  推荐写法-->
+    <template id="cpn">
+        <div>
+            <h2>我是标题1111</h2>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // Vue.component('标签名',{template:'选择器'})
+    Vue.component('cpn', {
+        template:'#cpn'
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+       
+    })
+</script>
+
+
+</html>

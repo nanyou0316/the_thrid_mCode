@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://sui.thinkadmin.top/dist/css/sm.min.css"> -->
+    <link rel="stylesheet" href="./css/min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- header -->
+        <Top></Top>
+        <!-- content -->
+        <Matter></Matter>
+        <tab-bar></tab-bar>
+        <Masks></Masks>
+    </div>
+    <!-- 头部 -->
+    <template id='top'>
+        <header class="bar bar-nav">
+            <a class="icon icon-friends pull-left"></a>
+            <a class="icon icon-edit pull-right" @click='changeMask'></a>
+            <h1 class="title">TODOLIST</h1>
+        </header>
+    </template>
+    <!-- 内容区 -->
+    <template id="matter">
+        <div class="box" style='margin-top: 44px;'>
+            <div class="card contentt" style="margin-top: 10px;" v-for='(item,index) in newTodo' :key='item.id'>
+                <div class="card-content centent_left">
+                    <div class="card-content-inner">{{item.dask}}</div>
+                </div>
+                <div class='centent_right'>
+                    <!-- 确定完成按钮 -->
+                    <p><a href="#" class="button button-success icon icon-check" :class="{'button-fill': item.flag }"
+                            @click='changeFlag($event,item.id)'></a></p>
+                    <!-- 删除按钮 -->
+                    <p><a href="#" class="button button-fill button-danger icon icon-remove"
+                            @click='del($event,item.id)'></a></p>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- 底部切换 -->
+    <template id="tabBar">
+        <div class="tab-bar">
+            <ul>
+                <li v-for="item in tabBars" class="button" :class="{'button-danger':item.type==type}"
+                    @click="change($event,item.type)">
+                    {{ item.options }}
+                </li>
+            </ul>
+        </div>
+    </template>
+    <!--遮罩层  -->
+    <template id="masks">
+        <div class='mask' v-if='maskFlag'>
+            <div class="mask_">
+                <input type="text" class='inp' v-foucs v-model='content' @keyup.enter='submit'>
+                <div>
+                    <button class="button button-fill button-danger" style='float:left' @click='submit'>确定</button>
+                    <button class="button button-fill button-success" style='float:right' @click='quxiao'>取消</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

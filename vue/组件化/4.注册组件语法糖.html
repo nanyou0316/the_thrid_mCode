@@ -9,35 +9,32 @@
 
 <body>
     <div id="app">
-        <mycomponent></mycomponent>
+        <!-- <cpn1></cpn1> -->
+        <cpn1></cpn1>
+        <cpn2></cpn2>
         
-        
-
     </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<!-- <script>
-    const component = Vue.extend({
-        template: `<div>我是全局组件</div>`
-    })
-    Vue.component("my-component", component)
-    var vm = new Vue({
-        el: '#app',
-        data: {
-
-        }
-    })
-</script> -->
 <script>
-    const component = Vue.extend({
-        template: `<div>我是局部组件</div>`
+    Vue.component('cpn1', {
+        template: `<div>
+            <h2>我是标题</h2>
+        </div>`
     })
+
     var vm = new Vue({
         el: '#app',
         data: {},
-        // 局部组件
+        //局部组件语法糖
         components: {
-            mycomponent: component
+            cpn2: {
+                template: `<div>
+                <h2>我是局部组件</h2>
+                </div>`
+            }
+
         }
     })
 </script>

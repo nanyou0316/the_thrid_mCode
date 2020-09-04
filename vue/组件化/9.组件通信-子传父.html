@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 驼峰命名必须转小写 中间加- 模板里面不受影响-->
+        <!-- 2.接受子组件发出来的事件  用cpnClick来监听itemclick 默认把参数携带过去-->
+        <cpn v-on:itemclick=cpnClick></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            我是子组件</br>
+            <button v-for="item in catagories" :key='item.id' @click='btnClick(item)'>{{item.name}}</button>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const cpn = {
+        template: '#cpn',
+        data() {
+            return {
+                catagories: [
+                    { id: 'aaa', name: '热门推荐' },
+                    { id: 'bbb', name: '手机数码' },
+                    { id: 'ccc', name: '家用家电' },
+                    { id: 'ddd', name: '电脑办公' },
+                ]
+            }
+        },
+        methods: {
+            btnClick(item) {
+                // console.log(item.name);
+                //1.发射一个事件,传递item参数
+                this.$emit('itemclick',item)
+            }
+        }
+
+    }
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            //3.定义cpnClick函数，接受item参数
+            cpnClick(item) {
+                console.log(item);
+            }
+        },
+        components: {
+            cpn
+        }
+    })
+</script>
+
+</html>

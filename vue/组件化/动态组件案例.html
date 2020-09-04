@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+    <button @click=change>{{flag?'切换组件2':'切换组件1'}}</button>
+        <!-- <cpn1></cpn1>
+        <cpn2></cpn2> -->
+        <component :is="flag?'cpn1':'cpn2'"></component>
+
+    </div>
+    <template id="cpn1">
+        <div>
+            我是组件1
+        </div>
+    </template>
+    <template id="cpn2">
+        <div>
+            我是组件2
+        </div>
+    </template>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('cpn1', {
+        template: '#cpn1'
+    })
+    Vue.component('cpn2', {
+        template: '#cpn2'
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+           flag:true
+        },
+        methods: {
+           change(){
+               this.flag=!this.flag
+           }
+        },
+    })
+</script>
+
+</html>

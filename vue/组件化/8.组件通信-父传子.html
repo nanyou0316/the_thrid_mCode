@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 驼峰命名必须转小写 中间加- 模板里面不受影响-->
+        <cpn :c-info=info></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            我是子组件子组件
+            <ul>
+                <li v-for="(item,index) in cInfo" :key='item'>{{item}}</li> 
+            </ul>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const cpn={
+        template:'#cpn',
+        props:{
+            cInfo:{
+                type:Object,
+                default(){
+                    return{}
+                }
+            }
+        }
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            info: {
+                name: '张三',
+                age:18,
+                height:1.73
+            }
+        },
+        methods: {
+
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+
+</html>

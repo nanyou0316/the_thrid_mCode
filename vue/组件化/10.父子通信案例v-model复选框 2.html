@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <base-checkbox v-model="lovingVue"></base-checkbox>
+        <div v-show="lovingVue">
+            如果选择框打勾我就会显示。
+        </div>
+    </div>
+    <template id="cpn">
+        <div>
+            <!-- 由于 v-model 默认传的是 value，不是 checked，所以对于对于复选框或者单选框的组件时，我们需要使用 model 选项，model 选项可以指定当前的事件类型和传入的 props。 -->
+            <input type="checkbox" :checked="checked" v-on:change='showorhide'>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 注册
+    Vue.component('base-checkbox', {
+        template: '#cpn',
+        model: {
+            prop: 'checked',
+            event: 'change'  // onchange 事件
+        },
+        props: {
+            checked: Boolean
+        },
+        methods: {
+            showorhide(event) {
+                this.$emit('change', event.target.checked)
+            }
+        }
+
+
+
+
+
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            lovingVue: true
+        },
+        methods: {
+
+        },
+
+    })
+</script>
+
+</html>

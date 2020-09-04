@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn v-model=num1></cpn>
+        <p>num1:{{num1}}</p>
+    </div>
+    <template id="cpn">
+        <div>
+            <!-- 组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件。 -->
+            <input type="text" :value='value' @input="mnum1">
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const cpn = {
+        template: '#cpn',
+        props: ['value'],
+        methods: {
+            mnum1(event) {
+                this.$emit('input', event.target.value)
+            }
+        }
+
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            num1: 1,
+            num2: 2
+        },
+        methods: {
+
+        },
+        components: {
+            cpn
+        }
+    })
+</script>
+
+</html>

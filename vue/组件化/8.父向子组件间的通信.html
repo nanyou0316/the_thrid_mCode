@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1.使用父组件的数据  -->
+        <cpncpn :cmovie='movies'  :cage='age'></cpncpn>
+    </div>
+    <template id="movie">
+        <div>
+            <!-- 3.使用父组件的数据 -->
+            <p>{{cmovie}}</p>
+            <ul>
+                <li v-for="(item, index) in cmovie" :key="index">{{item}}</li>
+            </ul>
+            <h2>{{cage}}</h2>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const cpn = {
+        template: '#movie',
+        // 2.接受父组件传递过来的数据,让子组件可以使用
+        // props: ['cmovie', 'cage'],
+        // props:{
+        //     //类型限制
+        //     cmovie:Array,
+        //     cage:String
+        // },
+        //推荐使用对象写法
+        props: {
+            //提供默认值
+            cmovie: {
+                type: Array,
+                //使用对象或者数组时，默认值设置必须是函数返回值的形式
+                default(){
+                    return [1,2,3,4,5,6,7]
+                }
+
+            },
+            cage: {
+                //类型可以传递多个
+                type: [String,Number],
+                default: 20,
+                //使用这个属性就必须传递cage
+                require:true
+
+            }
+        }
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            movies: ['海王', '海底总动员', '阿凡达'],
+            age: 18
+        },
+        methods: {
+
+        },
+        components: {
+            cpncpn: cpn
+        }
+    })
+</script>
+
+</html>

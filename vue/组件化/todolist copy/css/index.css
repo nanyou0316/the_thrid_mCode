@@ -1,0 +1,83 @@
+
+.box{
+    width: 100%;
+    height:520px;
+    overflow: auto;
+    overflow-y:scroll
+}
+.contentt{
+    display: flex;
+}
+.centent_left{
+    float:left;
+    width:80%;
+    word-wrap:break-word
+}
+.content_right p{
+    float:left;
+    width:50%;
+}
+
+.flag{
+    background:green;
+    color:green;
+}
+
+.tab-bar{
+    position: fixed;
+    left: 0;bottom: 0px;
+  
+    width: 100%;
+    height: 100px;
+  
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  .tab-bar ul{
+    width: 100%;height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding:0;
+    margin: 0;
+  }
+  .tab-bar ul li{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 80px!important;
+  }
+  .mask{
+      position:absolute;
+      left:0;
+      top:0;
+      width: 100%;
+      height:100%;
+      z-index:99;
+      background:rgba(0,0,0,.6);
+      display:flex;
+      align-items: center;
+      /* display:none; */
+  }
+  .mask_{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    height:150px;
+
+    background:#fff;
+  }
+  .mask_ input{
+      width:250px;
+      padding:8px 0;
+      height:34px;
+      margin:20px auto;
+  }
+  .mask_  div{
+      display:block;
+      width:100%;
+      padding:30px 50px;
+  }
