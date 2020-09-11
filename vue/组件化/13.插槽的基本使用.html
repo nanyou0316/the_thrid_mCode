@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn>
+            <button>按钮</button>
+        </cpn>
+        <cpn>
+            <h2>我是插槽2</h2>
+            <h2>我是插槽2</h2>
+        </cpn>
+        <cpn>
+            <a href="">我是插槽3</a>
+        </cpn>
+        <cpn></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <p>我是子组件</p>
+            <!-- 设置一个默认值，组件里面没有内容就默认是slot里面的内容 -->
+            <slot><button>我是默认值</button></slot>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            cpn: {
+                template: '#cpn',
+                data() {
+                    return {}
+                },
+                methods: {
+
+                }
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 排列顺序会按照下面slot name属性定义的顺序来排序 -->
+        <cpn>
+            <p slot="right">我是右边的</p>
+            <p slot="center">我是中间的</p>
+            <p slot="left">我是左边的</p>
+        </cpn>
+        
+        
+
+    </div>
+    <template id="cpn">
+        <div>
+            
+            <!-- 设置一个默认值，组件里面没有内容就默认是slot里面的内容 -->
+            
+            <slot name="left"></slot>
+            <slot name="center"></slot>
+            <slot name="right"></slot>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            cpn: {
+                template: '#cpn',
+                data() {
+                    return {}
+                },
+                methods: {
+
+                }
+            }
+        }
+    })
+</script>
+
+</html>

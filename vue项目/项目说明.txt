@@ -1,0 +1,64 @@
+项目描述
+
+1.这个项目是一个移动端的电商类型，主要功能是给用户和商家提供一个可交易的平台，核心内容包括，user相关，商品相关，评论，等等常见电商功能。
+
+项目职责：
+
+所负责的模块有：用户相关，点赞，评论，信息提交，文件上传等功能
+
+项目技术栈：
+
+1.Vue全家桶：Vue vuex vue-router cli
+2.前后端交互：axios
+3.移动端事件库：hammer.js
+4.js封装的操作库：loadsh
+5.移动端滚动事件库：better-scroll
+6.移动端滑动库：swiper
+7.Vue组件库：vant
+8.采用md5进行密码加密输出，防止明文发送
+9.采用es7的async函数来进行异步流程处理
+10.采用sass/less来进行css预处理
+11.采用px2rem进行rem的单位转换
+
+项目构建:
+1.初始化安装一些包
+    1.安装yarn add axios
+    2.安装yarn add vant babel-plugin-import -D
+    -D 开发环境  最终会转换成html结构  将来是不用的（在目前需要编译）
+    -S 生产环境
+2.构建目录
+   根目录下面创建一个.prettierrc文件  设置双引号改为单引号，末尾分号去掉
+   public->mock存放虚拟数据（mock.js）
+   assets
+        1.全局样式
+        2.图片【本地图片不建议】
+        创建一个样式文件夹  stylesheets
+        创建一个图片文件夹  img
+        创建一个字体文件夹  fonts
+    components里面放公共组件
+        1.头部
+        2.底部栏
+        3.列表
+        。。。
+    utils 公共函数封装库
+       cookie
+       request/ajax/http
+    api   
+       后端的接口地址
+       做一个数据请求的封装
+          比如：登入的一个请求封装
+    pages 放列表页的页面等其他页面
+        比如：home，car，category（分类）
+    router 路由配置
+    filters 过滤器
+    plugins 自定义插件
+
+3.构建vue.config.js (在根目录下面)
+4.配置vant  在babel.config.js里面配置
+5.移动端兼容  配置在移动端兼容.txt 文件里面
+6.移动端自适应  px2rem
+   yarn add postcss-px2rem px2rem-loader
+   配置rem.js文件
+7.store写完整
+8.数据请求封装
+  

@@ -12,10 +12,10 @@
         <!-- 单个复选框 -->
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" value="水果" v-model='check'>
+                <input type="checkbox" value="水果" v-model='aa'>
 
             </label>
-            <span>选中的是：{{check}}</span>
+            <span>选中的是：{{aa}}</span>
         </div>
         <div class="form-check">
             <label class="form-check-label">
@@ -50,7 +50,7 @@
     var vm = new Vue({
         el: '#app',
         data: {
-            check: false,
+            aa: false,
             checkList: ["火龙果"]
         }
     })

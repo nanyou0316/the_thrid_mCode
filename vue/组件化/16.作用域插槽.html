@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <cpn></cpn> -->
+        <!-- 1.获取子组件的数据 -->
+        <cpn>
+             <template  v-slot:default='tools'> <!--slot-scope='slot'-->
+                 <ol>
+                     <li v-for="item in tools.data">{{item}}</li>
+                 </ol>             
+                 
+            </template>
+        </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            我是子组件
+            <!-- 2.传递子组件的数据 -->
+            <slot  :data=arr>
+                <ul>
+                    <li v-for="(item, index) in arr" :key="item">{{item}}</li>
+                </ul>
+            <slot/>
+            
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            cpn: {
+                template: '#cpn',
+                data() {
+                    return {
+                        arr:[1,2,3,4,5,6]
+                    }
+                },
+                methods: {
+
+                }
+            }
+        }
+    })
+</script>
+
+</html>
