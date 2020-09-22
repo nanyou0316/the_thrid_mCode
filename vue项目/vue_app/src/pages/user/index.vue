@@ -1,40 +1,46 @@
 <template>
-  <div>
-    <div class="row">
-      <label for="">用户名</label>
-      <input type="text" v-model="username" />
+  <div class="container" v-swiperight='back' v-swipeleft='forward'>
+    <!-- 已经登入 -->
+    <div v-if="userInfo.username">
+      <div>
+        <img :src="userInfo.pic" alt="">
+        {{userInfo.username}}
+        <van-button type="primary" @click="loginOut">退出登入</van-button>
+      </div>
     </div>
-    <div class="row">
-      <label for="">密码</label>
-      <input type="password" v-model="password" />
-    </div>
-    <div class="row">
-      <button @click="getLogin">登入</button>
+    <!-- 未登入 -->
+    <div v-else>
+      <router-link tag="button" to="/register">注册</router-link>
+      <router-link tag="button" to="/login">登入</router-link>
     </div>
   </div>
 </template>
+
 <script>
-import { mapState, mapActions } from 'vuex'
+import {getCookie, removeCookie} from 'Utils/cookie.js'
 export default {
-  data () {
-    return {
-      username: '',
-      password: ''
-    }
-  },
   computed: {
-    ...mapState('userStore', {
-      loginData: state => state.loginData
-    })
+    userInfo () {
+      return {
+        pic: getCookie('avatar'),
+        username: getCookie('username')
+      }
+    }
   },
   methods: {
-    ...mapActions('userStore', ['login']), // action里面定义的方法
-    getLogin () {
-      this.login({
-        username: this.username,
-        password: this.$md5(this.password)
-      })
+    loginOut(){
+      removeCookie('username')
+      removeCookie('avatar')
+      removeCookie('userId')
+      removeCookie('token')
+      this.$router.push('/login')
     }
-  }
+  },
 }
 </script>
+<style lang='scss' scoped>
+  img{
+    width:100px;
+    height:100px
+  }
+</style>

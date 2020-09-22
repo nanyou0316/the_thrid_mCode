@@ -61,4 +61,23 @@
    配置rem.js文件
 7.store写完整
 8.数据请求封装
+
+
+路由 yarn add vue-router
+1.单页面应用
+  1.只有一个单文件的项目
+  2.比如：index.html
+2.单页面可以通过路由来进行页面内容切换
+3.路由模式
+  1.hash 传统浏览器模式 #/home
+    原理：hashchange事件
+  2.history 现代浏览器  /home
+    原理 h5 popstate事件 + history api
+  3.abstrict
+    用于node.js
+  一般用1和2
+
+原理
+
+页面一般是导航区域 + 内容展示区域
   

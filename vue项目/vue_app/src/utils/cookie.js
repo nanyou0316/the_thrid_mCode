@@ -16,3 +16,6 @@ export const getCookie = function (name) {
     }
   }
 }
+export const removeCookie = function(name) {
+  setCookie(name, '', -1)
+}

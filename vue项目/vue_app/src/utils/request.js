@@ -1,6 +1,8 @@
 import axios from 'axios'
 // import { getCookie } from 'Utils/cookie'
 import qs from 'qs'
+import { Toast } from 'vant'
+
 const ins = axios.create({
   // baseURL: ''
   timeout: 4000
@@ -13,6 +15,11 @@ ins.interceptors.request.use(
     // config.headers.common['authToken'] = token
     // config.headers.common['token'] = token
     // config.headers.common['Cookie'] = token
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+      loadingType: 'spinner'
+    })
     return config
   },
   function (error) {
@@ -21,7 +28,7 @@ ins.interceptors.request.use(
 )
 ins.interceptors.response.use(
   function (res) {
-    //! 将得到的结果做一个数据处理
+    //! 将得到的结果做一个数据处理，数目默认是在结果的data里面
     return res.data
   },
   function (error) {

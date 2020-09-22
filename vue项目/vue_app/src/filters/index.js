@@ -6,4 +6,7 @@ export default function filterhandler (Vue) {
     const data = new Date(val)
     return data.getFullYear() + type + (data.getMonth() + 1) + type + data.getDate()
   })
+  Vue.filter('imgFilter',function(val){
+    return val.replace('w.h','128.180')
+  })
 }
