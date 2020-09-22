@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 1.引入react需要的资源包  react  reactDOM  babel[jsx]   -->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- 选择一个已有dom作为你的React作用范围，不能选择body -->
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    class App extends React.Component {
+      state = {
+        count: 0,
+      }
+      componentDidMount() {
+        const that = this
+        const btn = document.querySelector('button')
+        btn.onclick = function () {
+          that.setState({
+            count: ++that.state.count,
+          })
+          console.log('this.state.count', that.state.count)
+        }
+      }
+      // increment=()=>{
+      //    console.log('this.state.count',this.state.count)  //旧值
+      //   this.state.count++
+      //   this.setState({
+      //         count: this.state.count
+      //       })
+
+      // }
+      /* 
+          * setState同步操作的情况
+            * 1. 它的第一个参数是对象
+            * 2. 原生事件中它是同步
+
+        */
+      // <button onClick={()=>{this.increment()}}>+</button>
+      render() {
+        const { count } = this.state
+        return (
+          <div>
+            <button>+</button>
+            {count}
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<App />, document.querySelector('#root'))
+  </script>
+</html>

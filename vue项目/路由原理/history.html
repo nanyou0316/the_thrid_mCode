@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    导航区域<br>
+    <a href="#/a">a</a>
+    <a href="#/b">b</a>
+    <a href="#/c">c</a><br>
+    <button>跳转到/a</button>
+    内容区域<br>
+    <div class="box"></div>
+  </body>
+  <script>
+    //路由表
+    const routes = [
+      {
+        path: "#/a",
+        content: "a的内容",
+      },
+      {
+        path: "#/b",
+        content: "b的内容",
+      },
+      {
+        path: "#/c",
+        content: "c的内容",
+      },
+    ];
+    let box=document.querySelector('.box')
+    let btn=document.querySelector('button')
+    // 用于监听url地址栏变化的
+    // window.onpopstate=function(){
+    //     console.log('url改变了');
+    //     const {hash} =location
+    //     routes.map(item =>{
+    //         if(item.path==hash) {
+    //            box.innerHTML=item.content
+    //         }
+    //     })
+    // }
+    // 通过button按钮来做跳转
+    
+    //一般使用history  一定是和后端配合（涉及到反向代理）
+    //用的不好会做成数据请求 而不是跳转页面
+    
+    btn.onclick=function(){
+      console.log('history',history);
+      // history.pushState('a','a','#/a')
+      history.replaceState('a','a','#/a')
+      box.innerHTML='a'
+      // 原型上的属性
+      // go 1 0 -1
+      // back() 后退
+      // forward() 前进
+      // pushState 跳指定页面 将路由跳转操作会有缓存，一级一级
+      // replaceState 跳指定页面  不会将操作存入历史记录，跳两级
+      // 两者的区别  replaceState
+
+    }
+  </script>
+</html>

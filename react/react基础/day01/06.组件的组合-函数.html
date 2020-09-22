@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- 1.引入react需要的资源包  react  reactDOM  babel[jsx]   -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+  function Tab () {
+      return <div>我是儿子1</div>
+  }
+  function Tab1 () {
+      return <div>我是儿子2</div>
+  }
+  // 函数的组合需要使用{children}占位
+  function App ({children}) {
+      console.log('react',React)
+      return <div>
+      <h3>我是爸爸</h3>
+      {children}
+      </div>
+  }
+  ReactDOM.render(<App>
+    <Tab></Tab>
+    <Tab1></Tab1>
+  </App>,document.querySelector('#root'))
+</script>
+</html>

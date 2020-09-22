@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入react需要的资源包  react  reactDOM  babel[jsx]   -->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 选择一个已有dom作为你的React作用范围，不能选择body -->
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+/* 
+      * props外部传入
+        * 函数只能接受外部传参
+    
+    */
+
+const name='zhangsan'
+const age=18
+function App(props){
+  return <div>
+    {props.name}--{props.age}
+  </div>
+}
+// 解构成下面这种情况{aa}，把aa解构出来
+// function App ({name}) {
+//   return <div>
+//     {name}
+//   </div>
+// }
+ReactDOM.render(<App name={name} age={age} />,document.querySelector('#root'))
+</script>
+</html>

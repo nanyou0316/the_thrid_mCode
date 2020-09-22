@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入react需要的资源包  react  reactDOM  babel[jsx]   -->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--  使用第三方库： prop-types  -->
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+</head>
+<body>
+    <!-- 选择一个已有dom作为你的React作用范围，不能选择body -->
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+  const name='zhangsan'
+  const age=20
+  const phone='16622980120'
+  class App extends React.Component{
+    // static defaultProps={
+    //   name:'zhangsan',
+    //   age:20,
+    //   phone:16622980120
+    // }
+    render () {
+      const {name,age,phone}=this.props
+      return <div>
+        {name}--{age}--{phone}
+      </div>
+    }
+    
+  }
+  // 属性校验
+  App.propTypes={
+    name:PropTypes.string,
+    age:function(props,propName,componentName){
+      console.log('props',props)
+      console.log('propName',propName)
+      console.log('componentName',componentName)
+      if(props.age<18){
+        alert('滚回家写作业去')
+      }else{
+        alert('我带你去网吧偷耳机')
+      }
+    },
+    phone:function({phone}){
+      const reg=/^1(3|4|5|6|7|8|9)\d{9}$/
+      if(!reg.test(phone)){
+        alert('您的手机号码格式有误')
+      }
+    }
+  }
+  ReactDOM.render(<App name={name} age={age} phone={phone} />,document.querySelector('#root'))  
+</script>
+</html>

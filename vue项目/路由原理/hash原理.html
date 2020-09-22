@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    导航区域<br>
+    <a href="#/a">a</a>
+    <a href="#/b">b</a>
+    <a href="#/c">c</a><br>
+    内容区域<br>
+    <div class="box"></div>
+  </body>
+  <script>
+    //路由表
+    const routes = [
+      {
+        path: "#/a",
+        content: "a的内容",
+      },
+      {
+        path: "#/b",
+        content: "b的内容",
+      },
+      {
+        path: "#/c",
+        content: "c的内容",
+      },
+    ];
+    let box=document.querySelector('.box')
+    // 用于监听url地址栏变化的
+    window.onhashchange=function(){
+        console.log('url改变了');
+        const {hash} =location
+        routes.map(item =>{
+            if(item.path==hash) {
+               box.innerHTML=item.content
+            }
+        })
+    }
+  </script>
+</html>
