@@ -66,3 +66,49 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+<!-- 
+scss  安装node-sass  sass-loader -D就可以使用
+
+less要自己配置  
+  1.先安装yarn add less less-loader -D
+  2.
+    const lessRegex = /\.(less)$/; // 全局配置.less结尾的文件，此文件都是全局样式
+    const lessModuleRegex = /\.module\.less$/;//全局匹配以xxx.module.less结尾的文件，只在当前组件中起作用的less文件 
+
+  3.
+     {
+        test: lessRegex,
+        exclude: lessModuleRegex,
+        use: getStyleLoaders(
+        {
+            importLoaders: 2,
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+        },
+        'less-loader'
+        ),
+        // Don't consider CSS imports dead code even if the
+        // containing package claims to have no side effects.
+        // Remove this when webpack adds a warning or an error for this.
+        // See https://github.com/webpack/webpack/issues/6571
+        sideEffects: true,
+    },
+    // Adds support for CSS Modules, but using SASS
+    // using the extension .module.scss or .module.sass
+    {
+        test: lessModuleRegex,
+        use: getStyleLoaders(
+        {
+            importLoaders: 2,
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+            //modules: true,//modules为true表示开启css样式模块化
+            // getLocalIdent: getCSSModuleLocalIdent,
+            modules: {
+            getLocalIdent: getCSSModuleLocalIdent,
+            }
+        },
+        'less-loader'
+        ),
+    }, 
+ -->
